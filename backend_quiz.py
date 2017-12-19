@@ -9,11 +9,14 @@ from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import r2_score
 import pandas as pd
 
+## Log in to the Watson NLC API
 natural_language_classifier = NaturalLanguageClassifierV1(
     username='b2ca77b4-8191-4b56-b542-8b2e716e0bd8',
     password='C2q0t1AhFRbh'
 )
 print("Initializing the application, please wait a few seconds.")
+
+## Open Neural Network training data and start training the Neural Net
 skill_data = pd.read_csv(os.getcwd()+'/Data/dataset_nn.csv', header=0
                         ,  names=["education", "age", "interest", "num_of_questions", "perc_correct", "avg_time_to_answer", "prev_skill_level", "feedback", "pred_skill_level"])
 
@@ -23,6 +26,7 @@ y = skill_data['pred_skill_level']
 mlp = MLPRegressor(hidden_layer_sizes=(20,13,13,20),max_iter=500)
 mlp.fit(X, y)
 
+## Initialize the student (player) class
 class Student:
 
     def __init__(self,name):
@@ -62,6 +66,7 @@ class Student:
     def add_answer(self,correctness):
         self.answer_path.append(correctness)
 
+## Initialize the question and answer classes
 class Question:
 
     def __init__(self, name):
@@ -91,7 +96,8 @@ class Answer:
     def set_true(self, boolean):
         self.is_true = boolean
 
-
+## Generate some testing questions and answers
+## The questions are classified to the category using the NL-classifier
 Q1 = Question('Where did the Anatomy Lesson take place?')
 Q1.add_answer(Answer('Amsterdam'))
 Q1.answers[0].set_true(True)
@@ -170,6 +176,7 @@ Q4.answers[6].alter_level(0.75)
 Q4.answers[7].alter_level(0.75)
 Q4.alter_category(natural_language_classifier.classify("3363cfx256-nlc-54927", Q4.name)['top_class'])
 
+## Start the quiz with some intialization questions
 try:
     name = input('What is your name?\n')
     player = Student(name)
@@ -182,6 +189,7 @@ try:
 except ValueError:
     sys.exit("Invalid value entered, restart the application.")
 
+## Initialize the question order based on the interests
 category = natural_language_classifier.classify("3363cfx256-nlc-54927", ' '.join(player.interests))['top_class']
 first_questions = []
 last_questions = []
@@ -190,9 +198,9 @@ for q in question_path:
         first_questions.append(q)
     else:
         last_questions.append(q)
-
 real_question_path = first_questions + last_questions
 
+## Start the actual Question/Answering part
 try:
     player_df = pd.DataFrame([player.education, player.age, player.interest_level, 0.0, 0.0, 0.0, 0.0, 0.0])
     i = 0
@@ -227,7 +235,7 @@ except ValueError:
 
 print("You ended up with skill level {}".format(np.clip(round(mlp.predict(player_df.transpose())[0],3), 0, 1)))
 
-## Code to train and validate the neural network
+## Code used to train and validate the neural network
 # skill_data = pd.read_csv('dataset_nn.csv', header=0
 #                         ,  names=["education", "age", "interest", "num_of_questions", "perc_correct", "avg_time_to_answer", "prev_skill_level", "feedback", "pred_skill_level"])
 #
