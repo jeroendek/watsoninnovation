@@ -18,6 +18,9 @@ Python 3.x is needed to run this code. The following python packages are necessa
 
 You can install these using your favorite package manager, for example [PIP](https://pypi.python.org/pypi/pip)
 
-# To run the code:
+# To run the back-end code:
 To test the code, copy the repository, and in the command line, navigate to the folder where you cloned it into. Then run
 "Python backend_quiz.py" and play the quiz. Instructions for the quiz are found while playing.
+
+# To run the front-end code:
+[Swift](https://github.com/jeroendek/watsoninnovation) is required to run the front-end application.
