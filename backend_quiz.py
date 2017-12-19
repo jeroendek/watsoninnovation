@@ -18,10 +18,10 @@ print("Initializing the application, please wait a few seconds.")
 
 ## Open Neural Network training data and start training the Neural Net
 skill_data = pd.read_csv(os.getcwd()+'/Data/dataset_nn.csv', header=0
-                        ,  names=["education", "age", "interest", "num_of_questions", "perc_correct", "avg_time_to_answer", "prev_skill_level", "feedback", "pred_skill_level"])
+                        ,  names=["education", "age", "interest", "num_of_questions", "perc_correct", "avg_time_to_answer", "prev_skill_level", "feedback", "skill_level"])
 
-X = skill_data.drop('pred_skill_level', axis=1)
-y = skill_data['pred_skill_level']
+X = skill_data.drop('skill_level', axis=1)
+y = skill_data['skill_level']
 
 mlp = MLPRegressor(hidden_layer_sizes=(20,13,13,20),max_iter=500)
 mlp.fit(X, y)
@@ -209,7 +209,7 @@ try:
         new_skill = np.clip(mlp.predict(player_df.transpose()), 0, 1)
         print("Your skill level is {}\n".format(round(new_skill[0],3)))
         print("Question {}: {}\n".format(i, q.name))
-        if (new_skill < 0.5):
+        if new_skill < 0.5:
             a_skill_level = 0.25
         else:
             a_skill_level = 0.75
@@ -237,11 +237,11 @@ print("You ended up with skill level {}".format(np.clip(round(mlp.predict(player
 
 ## Code used to train and validate the neural network
 # skill_data = pd.read_csv('dataset_nn.csv', header=0
-#                         ,  names=["education", "age", "interest", "num_of_questions", "perc_correct", "avg_time_to_answer", "prev_skill_level", "feedback", "pred_skill_level"])
+#                         ,  names=["education", "age", "interest", "num_of_questions", "perc_correct", "avg_time_to_answer", "prev_skill_level", "feedback", "skill_level"])
 #
 #
-# X = skill_data.drop('pred_skill_level', axis=1)
-# y = skill_data['pred_skill_level']
+# X = skill_data.drop('skill_level', axis=1)
+# y = skill_data['skill_level']
 # X_train, X_test, y_train, y_test = train_test_split(X, y)
 # mlp.fit(X_train, y_train)
 # predictions = mlp.predict(X_test)
