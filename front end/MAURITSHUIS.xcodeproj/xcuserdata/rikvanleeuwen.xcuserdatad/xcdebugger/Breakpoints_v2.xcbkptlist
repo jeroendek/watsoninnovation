@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MAURITSHUIS/AppDelegate.swift"
+            timestampString = "534601625.382527"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MAURITSHUIS.AppDelegate.window.getter : Swift.Optional&lt;__ObjC.UIWindow&gt;"
+                  moduleName = "MAURITSHUIS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rikvanleeuwen/Dropbox/VU%20Master/2.2%20Watson/MAURITSHUIS/MAURITSHUIS/AppDelegate.swift"
+                  timestampString = "534600075.837823"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "109">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MAURITSHUIS.AppDelegate.window.setter : Swift.Optional&lt;__ObjC.UIWindow&gt;"
+                  moduleName = "MAURITSHUIS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rikvanleeuwen/Dropbox/VU%20Master/2.2%20Watson/MAURITSHUIS/MAURITSHUIS/AppDelegate.swift"
+                  timestampString = "534600075.842832"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MAURITSHUIS.AppDelegate.init() -&gt; MAURITSHUIS.AppDelegate"
+                  moduleName = "MAURITSHUIS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rikvanleeuwen/Dropbox/VU%20Master/2.2%20Watson/MAURITSHUIS/MAURITSHUIS/AppDelegate.swift"
+                  timestampString = "534600075.845646"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MAURITSHUIS/ViewControllerNLC.swift"
+            timestampString = "534603782.515331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6"
+            endingLineNumber = "6"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
