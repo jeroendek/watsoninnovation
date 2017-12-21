@@ -4,7 +4,6 @@ import sys
 from watson_developer_cloud import NaturalLanguageClassifierV1
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn import neural_network
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import r2_score
 import pandas as pd
@@ -14,6 +13,7 @@ natural_language_classifier = NaturalLanguageClassifierV1(
     username='b2ca77b4-8191-4b56-b542-8b2e716e0bd8',
     password='C2q0t1AhFRbh'
 )
+classifier_id = 'e554c3x251-nlc-113321'
 print("Initializing the application, please wait a few seconds.")
 
 ## Open Neural Network training data and start training the Neural Net
@@ -117,7 +117,7 @@ Q1.answers[4].alter_level(0.75)
 Q1.answers[5].alter_level(0.75)
 Q1.answers[6].alter_level(0.75)
 Q1.answers[7].alter_level(0.75)
-Q1.alter_category(natural_language_classifier.classify("3363cfx256-nlc-54927", Q1.name)['top_class'])
+Q1.alter_category(natural_language_classifier.classify(classifier_id, Q1.name)['top_class'])
 
 Q2 = Question('Who was commissioned to paint this painting of Dr. Nicolaes Tulp')
 Q2.add_answer(Answer('Rembrandt van Rijn'))
@@ -138,7 +138,7 @@ Q2.answers[4].alter_level(0.25)
 Q2.answers[5].alter_level(0.25)
 Q2.answers[6].alter_level(0.25)
 Q2.answers[7].alter_level(0.25)
-Q2.alter_category(natural_language_classifier.classify("3363cfx256-nlc-54927", Q2.name)['top_class'])
+Q2.alter_category(natural_language_classifier.classify(classifier_id, Q2.name)['top_class'])
 
 Q3 = Question('Why were the men wearing collars?')
 Q3.add_answer(Answer('They were fashionable'))
@@ -153,7 +153,7 @@ Q3.answers[1].alter_level(0.75)
 Q3.answers[2].alter_level(0.25)
 Q3.answers[3].alter_level(0.25)
 Q3.answers[4].alter_level(0.25)
-Q3.alter_category(natural_language_classifier.classify("3363cfx256-nlc-54927", Q3.name)['top_class'])
+Q3.alter_category(natural_language_classifier.classify(classifier_id, Q3.name)['top_class'])
 
 Q4 = Question('Which period is the painting from?')
 Q4.add_answer(Answer('17e eeuw'))
@@ -174,7 +174,7 @@ Q4.answers[4].alter_level(0.75)
 Q4.answers[5].alter_level(0.75)
 Q4.answers[6].alter_level(0.75)
 Q4.answers[7].alter_level(0.75)
-Q4.alter_category(natural_language_classifier.classify("3363cfx256-nlc-54927", Q4.name)['top_class'])
+Q4.alter_category(natural_language_classifier.classify(classifier_id, Q4.name)['top_class'])
 
 ## Start the quiz with some intialization questions
 try:
@@ -190,7 +190,7 @@ except ValueError:
     sys.exit("Invalid value entered, restart the application.")
 
 ## Initialize the question order based on the interests
-category = natural_language_classifier.classify("3363cfx256-nlc-54927", ' '.join(player.interests))['top_class']
+category = natural_language_classifier.classify(classifier_id, ' '.join(player.interests))['top_class']
 first_questions = []
 last_questions = []
 for q in question_path:
@@ -236,7 +236,7 @@ except ValueError:
 print("You ended up with skill level {}".format(np.clip(round(mlp.predict(player_df.transpose())[0],3), 0, 1)))
 
 ## Code used to train and validate the neural network
-# skill_data = pd.read_csv('dataset_nn.csv', header=0
+# skill_data = pd.read_csv(os.getcwd()+'/Data/dataset_nn.csv', header=0
 #                         ,  names=["education", "age", "interest", "num_of_questions", "perc_correct", "avg_time_to_answer", "prev_skill_level", "feedback", "skill_level"])
 #
 #
@@ -248,8 +248,8 @@ print("You ended up with skill level {}".format(np.clip(round(mlp.predict(player
 # r2_score(y_test, predictions)
 
 
-## Training the Natural Language Classifier
-# with open("dataset_nlc.csv", 'rb') as training_data_nlc:
+# Training the Natural Language Classifier
+# with open(os.getcwd()+'/Data/dataset_nlc.csv', 'rb') as training_data_nlc:
 #     classifier = natural_language_classifier.create(training_data=training_data_nlc, name="InterestClassifier", language="en")
-
-# natural_language_classifier.classify("3363cfx256-nlc-54927", "Watson")['top_class']
+# print(json.dumps(classifier, indent=2))
+# natural_language_classifier.classify(classifier_id, "oil")
